@@ -1,0 +1,412 @@
+array-polar                 (libfive shapes)
+array-polar shape n [#[x y]]
+  Iterates a shape about an optional center position
+
+array-x                     (libfive shapes)
+array-x shape i dx
+  Iterates a part in a 1D array.
+  i is the number of repetitions
+  dx is the offset on the X axis
+
+array-xy                    (libfive shapes)
+array-xy shape i j #[dx dy]
+  Iterates a part in a 2D array.
+  i and j are part counts along each axis
+  dxy is a vec2 representing offsets along each axis
+
+array-xyz                   (libfive shapes)
+array-xyz shape i j k #[dx dy dz]
+  Iterates a part in a 2D array.
+  i, j, k are part counts along each axis
+  dxyz is a vec3 representing offsets along each axis
+
+attract                     (libfive transforms)
+attract shape #[x0 y0 z0] radius [exaggeration]
+  Attracts the shape towards a point based upon a radius r,
+  with optional exaggeration e
+
+attract-x                   (libfive transforms)
+attract-x shape #[x0 y0 z0] radius [exaggeration]
+  Attracts the shape towards a plane on the yz axes,
+  based upon a radius r, with optional exaggeration e
+
+attract-xy                  (libfive transforms)
+attract-xy shape #[x0 y0 z0] radius [exaggeration]
+  Attracts the shape towards a line parallel to the the z axis,
+  based upon a radius r, with optional exaggeration e
+
+attract-xz                  (libfive transforms)
+attract-xz shape #[x0 y0 z0] radius [exaggeration]
+  Attracts the shape towards a line parallel to the the y axis,
+  based upon a radius r, with optional exaggeration e
+
+attract-y                   (libfive transforms)
+attract-y shape #[x0 y0 z0] radius [exaggeration]
+  Attracts the shape towards a plane on the xz axes,
+  based upon a radius r, with optional exaggeration e
+
+attract-yz                  (libfive transforms)
+attract-yz shape #[x0 y0 z0] radius [exaggeration]
+  Attracts the shape towards a line parallel to the the x axis,
+  based upon a radius r, with optional exaggeration e
+
+attract-z                   (libfive transforms)
+attract-z shape #[x0 y0 z0] radius [exaggeration]
+  Attracts the shape towards a plane on the xy axes,
+  based upon a radius r, with optional exaggeration e
+
+blend                       (libfive csg)
+blend: alias for blend-expt-unit
+
+blend-difference            (libfive csg)
+blend-difference a b m [o]
+  Blends the subtraction of b, with optional offset o,
+  from a, with smoothness m
+
+blend-expt                  (libfive csg)
+blend-expt a b m
+  Blends two shapes by the given amount using exponents
+
+blend-expt-unit             (libfive csg)
+blend-expt-unit a b m
+  Blends two shapes by the given amount using exponents,
+  with the blend term adjusted to produce results approximately
+  resembling blend-rough for values between 0 and 1.
+
+blend-rough                 (libfive csg)
+blend-rough a b m
+  Blends two shapes by the given amount, using a fast-but-rough
+  CSG approximation that may not preserve gradients
+
+box                         (libfive shapes)
+box: alias for box-mitred
+
+box-centered                (libfive shapes)
+box-centered: alias for box-mitred-centered
+
+box-exact                   (libfive shapes)
+box-exact #[xmin ymin zmin] #[xmax ymax zmax]
+  A box with the given bounds, that will become rounder
+  as it's expanded by other functions
+
+box-exact-centered          (libfive shapes)
+box-exact-centered #[xsize ysize zsize] [#[x0 y0 z0]]
+  A box with the given size, centered around the given point,
+  that will become rounder as it's expanded by other functions
+
+box-mitred                  (libfive shapes)
+box-mitred #[xmin ymin zmin] #[xmax ymax zmax]
+  A box with the given bounds, that will stay creased
+  as it's expanded by other functions
+
+box-mitred-centered         (libfive shapes)
+box-mitred-centered #[xsize ysize zsize] [#[x0 y0 z0]]
+  A box with the given size, centered around the given point,
+  that will stay creased as it's expanded by other functions
+
+circle                      (libfive shapes)
+circle r [#[x y]]
+  A 2D circle with the given radius and optional center
+
+clearance                   (libfive csg)
+clearance a b o
+  Expands shape b by the given offset then subtracts it from shape a
+
+cone                        (libfive shapes)
+cone: alias for cone-z
+
+cone-z                      (libfive shapes)
+cone-z r height [#[x y z]]
+  Creates a cone from a radius, height, and optional base location
+
+cube                        (libfive shapes)
+cube: alias for box-mitred
+
+cylinder                    (libfive shapes)
+cylinder: alias for cylinder-z
+
+cylinder-z                  (libfive shapes)
+cylinder-z r h [#[x0 y0 z0]]
+  A cylinder (oriented along the Z axis)
+
+difference                  (libfive csg)
+difference a b [c [d [...]]]
+  Subtracts any number of shapes from the first argument
+
+emptiness                   (libfive shapes)
+emptiness: alias for emptiness (missing)
+extrude                     (libfive shapes)
+extrude: alias for extrude-z
+
+extrude-z                   (libfive shapes)
+extrude-z shape zmin zmax
+  Extrudes a 2D shape between za and zb
+
+gyroid                      (libfive shapes)
+gyroid #[x_period y_period z_period] thickness
+Create a volume-filling gyroid with the given periods and thickness
+
+half-space                  (libfive shapes)
+half-space #[nx ny nz] [#[px py pz]]
+  A plane that divides the world into inside and outside
+  Arguments are the plane normal and optional position
+
+intersection                (libfive csg)
+intersection a [b [c [...]]]
+  Returns the intersection of any number of shapes
+
+inverse                     (libfive csg)
+inverse a
+  Returns a shape that's the inverse of the input shape
+
+loft                        (libfive csg)
+loft a b zmin zmax
+  Produces a blended loft between a (at zmin) and b (at zmax)
+  a and b should be 2D shapes (i.e. invariant along the z axis)
+
+loft-between                (libfive csg)
+loft-between: alias for loft
+
+morph                       (libfive csg)
+morph a b m
+  Morphs between two shapes.
+  m = 0 produces a, m = 1 produces b
+
+move                        (libfive transforms)
+move shape #[dx dy [dz]]
+  Moves the given shape in 2D or 3D space
+
+offset                      (libfive csg)
+offset shape o
+  Expand or contract a given shape by an offset
+  Positive offsets expand the shape; negative offsets shrink it
+
+polygon                     (libfive shapes)
+polygon r n [#[x y]]
+  A polygon with center-to-vertex distance r and n sides
+
+pyramid                     (libfive shapes)
+pyramid: alias for pyramid-z
+
+pyramid-z                   (libfive shapes)
+pyramid-z #[xmin ymin] #[xmax ymax] zmin dz
+  Creates a pyramid from a base rectangle, lower z value and height
+
+rectangle                   (libfive shapes)
+rectangle #[xmin ymin] #[xmax ymax]
+  A rectangle with the given bounding corners
+
+rectangle-centered-exact    (libfive shapes)
+rectangle-centered-exact #[width height]
+  Constructs an exact-field rectangle at the origin
+
+rectangle-exact             (libfive shapes)
+rectangle-exact #[xmin ymin] #[xmax ymax]
+  Constructs a rectangle from an exact distance field
+
+reflect-x                   (libfive transforms)
+reflect-x shape [x0]
+  Reflect the given shape about the x origin or an optional offset
+
+reflect-xy                  (libfive transforms)
+reflect-xy shape
+  Moves the given shape across the plane Y=X
+
+reflect-xz                  (libfive transforms)
+reflect-xz shape
+  Moves the given shape across the plane X=Z
+
+reflect-y                   (libfive transforms)
+reflect-y shape [y0]
+  Reflect the given shape about the y origin or an optional offset
+
+reflect-yz                  (libfive transforms)
+reflect-yz: alias for reflect-xy
+
+reflect-z                   (libfive transforms)
+reflect-z shape [z0]
+  Reflect the given shape about the z origin or an optional offset
+
+repel                       (libfive transforms)
+repel shape #[x0 y0 z0] radius [exaggeration]
+  Repels the shape away from a point based upon a radius r,
+  with optional exaggeration e
+
+repel-x                     (libfive transforms)
+repel-x shape #[x0 y0 z0] radius [exaggeration]
+  Repels the shape away from a plane on the yz axes,
+  based upon a radius r, with optional exaggeration e
+
+repel-xy                    (libfive transforms)
+repel-xy shape #[x0 y0 z0] radius [exaggeration]
+  Repels the shape away from a line parallel to the the z axis,
+  based upon a radius r, with optional exaggeration e
+
+repel-xz                    (libfive transforms)
+repel-xz shape #[x0 y0 z0] radius [exaggeration]
+  Repels the shape away from a line parallel to the the y axis,
+  based upon a radius r, with optional exaggeration e
+
+repel-y                     (libfive transforms)
+repel-y shape #[x0 y0 z0] radius [exaggeration]
+  Repels the shape away from a plane on the xz axes,
+  based upon a radius r, with optional exaggeration e
+
+repel-yz                    (libfive transforms)
+repel-yz shape #[x0 y0 z0] radius [exaggeration]
+  Repels the shape away from a line parallel to the the x axis,
+  based upon a radius r, with optional exaggeration e
+
+repel-z                     (libfive transforms)
+repel-z shape #[x0 y0 z0] radius [exaggeration]
+  Repels the shape away from a plane on the xy axes,
+  based upon a radius r, with optional exaggeration e
+
+revolve-y                   (libfive transforms)
+revolve-y shape [x0]
+  Revolves a 2D (xy) shape around the vertical line x=x0
+
+ring                        (libfive shapes)
+ring ro ri [#[x y]]
+  A 2D ring with the given outer/inner radii and optional center
+
+rotate                      (libfive transforms)
+rotate: alias for rotate-z
+
+rotate-x                    (libfive transforms)
+rotate-x shape angle [#[x0 y0 z0]]
+  Rotate the given shape by an angle in radians
+  The center of rotation is #[0 0 0] or specified by the optional argument
+
+rotate-y                    (libfive transforms)
+rotate-y shape angle [#[x0 y0 z0]]
+  Rotate the given shape by an angle in radians
+  The center of rotation is #[0 0 0] or specified by the optional argument
+
+rotate-z                    (libfive transforms)
+rotate-z shape angle [#[x0 y0 z0]]
+  Rotate the given shape by an angle in radians
+  The center of rotation is #[0 0 0] or specified by the optional argument
+
+rounded-box                 (libfive shapes)
+rounded-box #[xmin ymin zmin] #[xmax ymax zmax] r
+  Rounded box with the given bounds and radius (as a 0-1 fraction)
+
+rounded-cube                (libfive shapes)
+rounded-cube: alias for rounded-box
+
+rounded-rectangle           (libfive shapes)
+rounded-rectangle #[xmin ymin] #[xmax ymax] r
+  A rectangle with rounded corners
+
+rounded-rectangle-exact     (libfive shapes)
+rounded-rectangle-exact #[xmin ymin] #[xmax ymax] r
+  A rectangle with rounded corners, with an exact distance field
+
+scale-x                     (libfive transforms)
+scale-x shape sx [x0]
+  Scales a shape by sx on the x axis about 0 or an optional offset
+
+scale-xyz                   (libfive transforms)
+scale-xyz shape #[sx sy sz] [#[x0 y0 z0]]
+  Scales a shape on all three axes, about 0 or an optional offset
+
+scale-y                     (libfive transforms)
+scale-y shape sy [y0]
+  Scales a shape by sy on the y axis about 0 or an optional offset
+
+scale-z                     (libfive transforms)
+scale-z shape sz [z0]
+  Scales a shape by sz on the z axis about 0 or an optional offset
+
+shear-x-y                   (libfive transforms)
+shear-x-y shape #[x0 y0] height offset [base-offset]
+  Shears a shape on the x axis as a function of y
+  offset = base-offset at base.y
+  offset = offset = base.y + h
+
+shell                       (libfive csg)
+shell shape o
+  Returns a shell of a shape with the given offset
+
+sphere                      (libfive shapes)
+sphere r [#[x y z]]
+  A sphere with the given radius and optional center
+
+symmetric-x                 (libfive transforms)
+symmetric-x shape
+  Clip the given shape at the x origin,
+  and duplicate the remaining shape reflected
+  on the other side of the origin
+
+symmetric-y                 (libfive transforms)
+symmetric-y shape
+  Clip the given shape at the y origin,
+  and duplicate the remaining shape reflected
+  on the other side of the origin
+
+symmetric-z                 (libfive transforms)
+symmetric-z shape
+  Clip the given shape at the z origin,
+  and duplicate the remaining shape reflected
+  on the other side of the origin
+
+taper-x-y                   (libfive transforms)
+taper-x-y shape #[x0 y0] height scale [base-scale]
+  Tapers a shape along the x axis as a function of y
+  width = base-scale at base
+  width = scale at base + #[0 h]
+
+taper-xy-z                  (libfive transforms)
+taper-xy-z shape #[x0 y0 z0] height scale [base-scale]
+  Tapers a shape in the xy plane as a function of z
+  width = base-scale at base
+  width = scale at base + #[0 0 h]
+
+torus                       (libfive shapes)
+torus: alias for torus-z
+
+torus-z                     (libfive shapes)
+torus-z R r [#[x y z]]
+  Create a torus from the given outer radius, inner radius, and optional center
+
+triangle                    (libfive shapes)
+triangle #[x0 y0] #[x1 y1] #[x2 y2]
+  A 2D triangle
+
+twirl-axis-x                (libfive transforms)
+twirl-axis-x shape amount radius [center]
+  Twirls the shape in the x axis
+  around the line extending from
+  the center point
+
+twirl-axis-y                (libfive transforms)
+twirl-axis-y shape amount radius [center]
+  Twirls the shape in the y axis
+  around the line extending from
+  the center point
+
+twirl-axis-z                (libfive transforms)
+twirl-axis-z shape amount radius [center]
+  Twirls the shape in the y axis
+  around the line extending from
+  the center point
+
+twirl-x                     (libfive transforms)
+twirl-x shape amount radius [center]
+  Twirls the shape in the x axis
+  around the optional center point
+
+twirl-y                     (libfive transforms)
+twirl-y shape amount radius [center]
+  Twirls the shape in the y axis
+  around the optional center point
+
+twirl-z                     (libfive transforms)
+twirl-z shape amount radius [center]
+  Twirls the shape in the z axis
+  around the optional center point
+
+union                       (libfive csg)
+union a [b [c [...]]]
+  Returns the union of any number of shapes
