@@ -6,5 +6,5 @@ import qualified Lib
 main :: IO ()
 main = do
     scad <- B.readFile "test.scad"
-    B.putStrLn (Lib.convert scad)
+    B.putStrLn (B.pack (show (Lib.convert scad)))
     return ()
