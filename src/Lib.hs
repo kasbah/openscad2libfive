@@ -3,7 +3,7 @@ module Lib
     ) where
 
 import qualified Language.OpenSCAD as OpenSCAD
-import qualified Data.ByteString as B
+import qualified Data.ByteString.Char8 as B
 
 convert :: B.ByteString -> B.ByteString
-convert scad = OpenSCAD.stripComments scad
+convert scad = B.pack (show $ OpenSCAD.parseFile scad)
