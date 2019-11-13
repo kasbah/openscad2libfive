@@ -17,7 +17,7 @@
 #
 # resolver: ./custom-snapshot.yaml
 # resolver: https://example.com/snapshots/2018-01-01.yaml
-resolver: lts-14.8
+resolver: lts-14.14
 
 # User packages to be built.
 # Various formats can be used as shown in the example below.
@@ -40,7 +40,10 @@ packages:
 #   commit: e7b331f14bcffb8367cd58fbfc8b40ec7642100a
 #
 extra-deps:
-  - language-openscad-0.1.7@sha256:1e5c65df0ddd410e5de84dfd4f4d7c1fb75c814a8f8c13bd51f1c2ee5ee3b8ce,1131
+  - git: https://github.com/bgamari/language-openscad.git
+    commit: 3f805c5d2cb03956362e33fcad8a3926ceed2b31
+  - "trifecta-2.1@sha256:34c69c2f80b370c81f17bb55ee2ed0b61530cb48338f7a81b0cd95653e9b8325,3966"
+
 # Override default flag values for local packages and extra-deps
 # flags: {}
 

@@ -5,15 +5,29 @@
 
 packages:
 - completed:
-    hackage: language-openscad-0.1.7@sha256:1e5c65df0ddd410e5de84dfd4f4d7c1fb75c814a8f8c13bd51f1c2ee5ee3b8ce,1131
+    cabal-file:
+      size: 1489
+      sha256: f78b28a9c8f5901ef903179b845bae023ea8a8885ffb3af10726152521ca98a2
+    name: language-openscad
+    version: 0.1.7
+    git: https://github.com/bgamari/language-openscad.git
     pantry-tree:
-      size: 273
-      sha256: 49b88d1c3aa69b54544e9079b91c502a731e744b37f038a662792356fd0e2135
+      size: 631
+      sha256: 800477f86d19446615ae70ff34ee7c74d181ae61a90bf22d71c4e04386ab5b78
+    commit: 3f805c5d2cb03956362e33fcad8a3926ceed2b31
   original:
-    hackage: language-openscad-0.1.7@sha256:1e5c65df0ddd410e5de84dfd4f4d7c1fb75c814a8f8c13bd51f1c2ee5ee3b8ce,1131
+    git: https://github.com/bgamari/language-openscad.git
+    commit: 3f805c5d2cb03956362e33fcad8a3926ceed2b31
+- completed:
+    hackage: trifecta-2.1@sha256:34c69c2f80b370c81f17bb55ee2ed0b61530cb48338f7a81b0cd95653e9b8325,3966
+    pantry-tree:
+      size: 1832
+      sha256: 5d23fffe86a418999eeff2e868b34ec0e39e05c469d6558ec41bd565d8c52f93
+  original:
+    hackage: trifecta-2.1@sha256:34c69c2f80b370c81f17bb55ee2ed0b61530cb48338f7a81b0cd95653e9b8325,3966
 snapshots:
 - completed:
-    size: 524789
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/14/8.yaml
-    sha256: 8af5eb80734f02621d37e82cc0cde614af2ddc9c320610acb0b1b6d9ac162930
-  original: lts-14.8
+    size: 525663
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/14/14.yaml
+    sha256: 6edc48df46eb8bf7b861e98dd30d021a92c2e1820c9bb6528aac5d997b0e14ef
+  original: lts-14.14
